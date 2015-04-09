@@ -1,6 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 $script_ovs = <<SCRIPT
+sudo apt-get update -y
 sudo apt-get install openvswitch-common openvswitch-switch -y
 sudo apt-get install python-pip python-dev -y
 sudo apt-get install git -y
