@@ -9,6 +9,8 @@ cd /home/vagrant
 sudo git clone http://github.com/osrg/ryu.git
 cd /home/vagrant/ryu
 sudo python setup.py install
+sudo pip install pbr
+sudo pip install six --upgrade
 
 cd /home/vagrant
 sudo git clone http://github.com/mininet/mininet.git
