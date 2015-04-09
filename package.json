@@ -1,0 +1,28 @@
+{
+  "name": "ovsdb-js",
+  "version": "0.0.1",
+  "description": "A node.js library implementation of the ovsdb protocol.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/flowgrammable/ovsdb-js.git"
+  },
+  "keywords": [
+    "OVSDB",
+    "SDN",
+    "Networking",
+    "node"
+  ],
+  "author": "Jasson Casey, Colton Chojnacki",
+  "license": "APL2",
+  "bugs": {
+    "url": "https://github.com/flowgrammable/ovsdb-js/issues"
+  },
+  "homepage": "https://github.com/flowgrammable/ovsdb-js",
+  "dependencies": {
+    "underscore": "^1.8.3"
+  }
+}
