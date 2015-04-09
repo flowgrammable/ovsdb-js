@@ -2,9 +2,9 @@
 # vi: set ft=ruby :
 $script_ovs = <<SCRIPT
 sudo apt-get update -y
-sudo apt-get install openvswitch-common openvswitch-switch -y
-sudo apt-get install python-pip python-dev -y
-sudo apt-get install git -y
+sudo apt-get install git unzip python-pip python-dev openvswitch-common openvswitch-switch -y
+
+# install ryu
 cd /home/vagrant
 sudo git clone http://github.com/osrg/ryu.git
 cd /home/vagrant/ryu
@@ -12,6 +12,7 @@ sudo python setup.py install
 sudo pip install pbr
 sudo pip install six --upgrade
 
+# install mininet	
 cd /home/vagrant
 sudo git clone http://github.com/mininet/mininet.git
 cd /home/vagrant/mininet
