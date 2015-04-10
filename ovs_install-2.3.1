@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 # OpenVSwitch installation
-sudo apt-get -y install graphviz autoconf libtool
+sudo apt-get -y install graphviz autoconf libtool openssl
 wget -q https://github.com/openvswitch/ovs/archive/v2.3.1.tar.gz
 tar xfz v2.3.1.tar.gz
 rm v2.3.1.tar.gz
@@ -10,7 +10,6 @@ cd /home/vagrant/ovs-2.3.1
 ./configure
 make
 sudo make install
-cd ..
 
 sudo mkdir -p /usr/local/etc/openvswitch
 sudo ovsdb-tool create /usr/local/etc/openvswitch/conf.db vswitchd/vswitch.ovsschema
@@ -20,3 +19,6 @@ sudo ovsdb-server --remote=punix:/usr/local/var/run/openvswitch/db.sock \
 
 sudo ovs-vsctl --no-wait init
 sudo ovs-vswitchd --pidfile --detach
+
+cd /home/vagrant
+
