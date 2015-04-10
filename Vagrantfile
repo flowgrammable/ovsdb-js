@@ -1,45 +1,5 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
-$script_ovs = <<SCRIPT
-sudo apt-get update -y
-sudo apt-get -y install git unzip python-pip python-dev
-
-# OpenVSwitch installation
-sudo apt-get -y install graphviz autoconf libtool
-wget -q https://github.com/openvswitch/ovs/archive/v2.3.1.tar.gz
-tar xfz v2.3.1.tar.gz
-rm v2.3.1.tar.gz
-cd /home/vagrant/ovs-2.3.1
-./boot.sh
-./configure
-make
-sudo make install
-cd ..
-sudo mkdir -p /usr/local/etc/openvswitch
-sudo ovsdb-tool create /usr/local/etc/openvswitch/conf.db vswitchd/vswitch.ovsschema
-sudo ovsdb-server --remote=punix:/usr/local/var/run/openvswitch/db.sock \
-                  --remote=db:Open_vSwitch,Open_vSwitch,manager_options \
-                  --pidfile --detach
-
-sudo ovs-vsctl --no-wait init
-sudo ovs-vswitchd --pidfile --detach
-
-
-# install ryu
-cd /home/vagrant
-sudo git clone http://github.com/osrg/ryu.git
-cd /home/vagrant/ryu
-sudo python setup.py install
-sudo pip install pbr
-sudo pip install six --upgrade
-
-# install mininet	
-cd /home/vagrant
-sudo git clone http://github.com/mininet/mininet.git
-cd /home/vagrant/mininet
-sudo python setup.py install
-sudo /home/vagrant/mininet/util/install.sh
-SCRIPT
 
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
 # configures the configuration version (we support older styles for
@@ -55,7 +15,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.define "ovs" do |ovs|
     ovs.vm.box = "ubuntu/trusty64"
-    ovs.vm.provision "shell", inline: $script_ovs
+    ovs.vm.provision :shell, path: "util/bootstrap.sh" 
     ovs.vm.network "private_network", ip: "192.168.10.2"
   end
 
