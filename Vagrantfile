@@ -2,14 +2,14 @@
 # vi: set ft=ruby :
 $script_ovs = <<SCRIPT
 sudo apt-get update -y
-sudo apt-get install git unzip python-pip python-dev -y
+sudo apt-get -y install git unzip python-pip python-dev
 
 # OpenVSwitch installation
-sudo apt-get graphviz autoconf libtool -y
-wget https://github.com/openvswitch/ovs/archive/v2.3.1.tar.gz
+sudo apt-get -y install graphviz autoconf libtool
+wget -q https://github.com/openvswitch/ovs/archive/v2.3.1.tar.gz
 tar xfz v2.3.1.tar.gz
 rm v2.3.1.tar.gz
-cd /home/vagrant/v2.3.1
+cd /home/vagrant/ovs-2.3.1
 ./boot.sh
 ./configure
 make
