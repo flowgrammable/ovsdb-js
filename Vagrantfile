@@ -2,8 +2,28 @@
 # vi: set ft=ruby :
 $script_ovs = <<SCRIPT
 sudo apt-get update -y
-sudo apt-get install git unzip python-pip python-dev openvswitch-common openvswitch-switch -y
-sudo apt-get graphviz autoconf libtool
+sudo apt-get install git unzip python-pip python-dev -y
+
+# OpenVSwitch installation
+sudo apt-get graphviz autoconf libtool -y
+wget https://github.com/openvswitch/ovs/archive/v2.3.1.tar.gz
+tar xfz v2.3.1.tar.gz
+rm v2.3.1.tar.gz
+cd /home/vagrant/v2.3.1
+./boot.sh
+./configure
+make
+sudo make install
+cd ..
+sudo mkdir -p /usr/local/etc/openvswitch
+sudo ovsdb-tool create /usr/local/etc/openvswitch/conf.db vswitchd/vswitch.ovsschema
+sudo ovsdb-server --remote=punix:/usr/local/var/run/openvswitch/db.sock \
+                  --remote=db:Open_vSwitch,Open_vSwitch,manager_options \
+                  --pidfile --detach
+
+sudo ovs-vsctl --no-wait init
+sudo ovs-vswitchd --pidfile --detach
+
 
 # install ryu
 cd /home/vagrant
