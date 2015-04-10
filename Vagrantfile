@@ -3,6 +3,7 @@
 $script_ovs = <<SCRIPT
 sudo apt-get update -y
 sudo apt-get install git unzip python-pip python-dev openvswitch-common openvswitch-switch -y
+sudo apt-get graphviz autoconf libtool
 
 # install ryu
 cd /home/vagrant
