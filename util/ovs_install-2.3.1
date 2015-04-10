@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-
+echo 'installing openvswitch..'
 # OpenVSwitch configure, build, and install
 sudo apt-get -y install graphviz autoconf libtool openssl
 wget -q https://github.com/openvswitch/ovs/archive/v2.3.1.tar.gz
@@ -7,9 +7,11 @@ tar xfz v2.3.1.tar.gz
 rm v2.3.1.tar.gz
 cd /home/vagrant/ovs-2.3.1
 ./boot.sh
-./configure
+./configure --with-linux=/lib/modules/`uname -r`/build
 make
 sudo make install
+sudo make modules_install
+sudo /sbin/modprobe openvswitch
 
 # Create the initial files necessary for operation
 sudo mkdir -p /usr/local/etc/openvswitch

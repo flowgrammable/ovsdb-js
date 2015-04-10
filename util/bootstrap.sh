@@ -18,3 +18,7 @@ sudo git clone http://github.com/mininet/mininet.git
 cd /home/vagrant/mininet
 sudo python setup.py install
 sudo /home/vagrant/mininet/util/install.sh -n
+
+cd /home/vagrant
+/vagrant/util/ovs_install-2.3.1
+/vagrant/util/ovs_run-2.3.1
