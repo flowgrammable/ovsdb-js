@@ -19,6 +19,7 @@ cd /home/vagrant/mininet
 sudo python setup.py install
 sudo /home/vagrant/mininet/util/install.sh -n
 
+# OVS / OpenVSwitch
 cd /home/vagrant
 /vagrant/util/ovs_install-2.3.1
 /vagrant/util/ovs_run-2.3.1
