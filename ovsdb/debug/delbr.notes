@@ -1,4 +1,3 @@
-Request
 {
     "id": 0,
     "method": "monitor",
@@ -40,34 +39,70 @@ Request
         }
     ]
 }
-Response
 {
     "id": 0,
     "result": {
+        "Bridge": {
+            "c8fe096d-e14c-4bff-9298-668e93fc78ca": {
+                "new": {
+                    "controller": [
+                        "uuid",
+                        "cfa3f144-fde3-40c9-a522-0c60ca7ff6d6"
+                    ],
+                    "fail_mode": [
+                        "set",
+                        []
+                    ],
+                    "name": "br0",
+                    "ports": [
+                        "uuid",
+                        "c5b1e35a-0910-4578-b9ff-ae75f2ea04c7"
+                    ]
+                }
+            }
+        },
+        "Controller": {
+            "cfa3f144-fde3-40c9-a522-0c60ca7ff6d6": {
+                "new": {}
+            }
+        },
+        "Interface": {
+            "d9f09199-1824-49c6-8b61-cb098332b2ee": {
+                "new": {
+                    "name": "br0",
+                    "ofport": 65534
+                }
+            }
+        },
         "Open_vSwitch": {
             "54411240-a3e5-4114-9d8b-f31aae33169c": {
                 "new": {
                     "bridges": [
+                        "uuid",
+                        "c8fe096d-e14c-4bff-9298-668e93fc78ca"
+                    ],
+                    "cur_cfg": 18
+                }
+            }
+        },
+        "Port": {
+            "c5b1e35a-0910-4578-b9ff-ae75f2ea04c7": {
+                "new": {
+                    "fake_bridge": false,
+                    "interfaces": [
+                        "uuid",
+                        "d9f09199-1824-49c6-8b61-cb098332b2ee"
+                    ],
+                    "name": "br0",
+                    "tag": [
                         "set",
                         []
-                    ],
-                    "cur_cfg": 2
+                    ]
                 }
             }
         }
     }
 }
-Request
-Transact
- Wait   - wait for bridge uuid set
- Insert - Insert ref to br0 interface in ports table
- Update - update Open_vSwitch table to include reference to bridge br0
- Insert - insert br0 in interface table
- Insert - insert port br0 reference in Bridge table
- Mutate - increment next_cfg by 1
- Select - why select? 
- Comment -
- 
 {
     "id": 1,
     "method": "transact",
@@ -81,8 +116,8 @@ Transact
             "rows": [
                 {
                     "bridges": [
-                        "set",
-                        []
+                        "uuid",
+                        "c8fe096d-e14c-4bff-9298-668e93fc78ca"
                     ]
                 }
             ],
@@ -101,23 +136,11 @@ Transact
             ]
         },
         {
-            "op": "insert",
-            "row": {
-                "interfaces": [
-                    "named-uuid",
-                    "row130cfe88_ba44_4ae7_917e_6c875716bd36"
-                ],
-                "name": "br0"
-            },
-            "table": "Port",
-            "uuid-name": "row53155020_4eff_4960_b48d_1326f123face"
-        },
-        {
             "op": "update",
             "row": {
                 "bridges": [
-                    "named-uuid",
-                    "row920275d1_6714_4d46_8262_e214022426a5"
+                    "set",
+                    []
                 ]
             },
             "table": "Open_vSwitch",
@@ -131,27 +154,6 @@ Transact
                     ]
                 ]
             ]
-        },
-        {
-            "op": "insert",
-            "row": {
-                "name": "br0",
-                "type": "internal"
-            },
-            "table": "Interface",
-            "uuid-name": "row130cfe88_ba44_4ae7_917e_6c875716bd36"
-        },
-        {
-            "op": "insert",
-            "row": {
-                "name": "br0",
-                "ports": [
-                    "named-uuid",
-                    "row53155020_4eff_4960_b48d_1326f123face"
-                ]
-            },
-            "table": "Bridge",
-            "uuid-name": "row920275d1_6714_4d46_8262_e214022426a5"
         },
         {
             "mutations": [
@@ -192,23 +194,22 @@ Transact
             ]
         },
         {
-            "comment": "ovs-vsctl: ovs-vsctl --verbose add-br br0",
+            "comment": "ovs-vsctl: ovs-vsctl --verbose del-br br0",
             "op": "comment"
         }
     ]
 }
-Update
 {
     "method": "update",
     "params": [
         null,
         {
             "Bridge": {
-                "045d7d58-02bb-45cf-838f-b4bd8bfa5a82": {
-                    "new": {
+                "c8fe096d-e14c-4bff-9298-668e93fc78ca": {
+                    "old": {
                         "controller": [
-                            "set",
-                            []
+                            "uuid",
+                            "cfa3f144-fde3-40c9-a522-0c60ca7ff6d6"
                         ],
                         "fail_mode": [
                             "set",
@@ -217,19 +218,21 @@ Update
                         "name": "br0",
                         "ports": [
                             "uuid",
-                            "c5e381d8-e5d5-4693-9199-b50aeb1ad6f8"
+                            "c5b1e35a-0910-4578-b9ff-ae75f2ea04c7"
                         ]
                     }
                 }
             },
+            "Controller": {
+                "cfa3f144-fde3-40c9-a522-0c60ca7ff6d6": {
+                    "old": {}
+                }
+            },
             "Interface": {
-                "1d3ad587-e962-4441-92ee-0d67929f8d3e": {
-                    "new": {
+                "d9f09199-1824-49c6-8b61-cb098332b2ee": {
+                    "old": {
                         "name": "br0",
-                        "ofport": [
-                            "set",
-                            []
-                        ]
+                        "ofport": 65534
                     }
                 }
             },
@@ -237,26 +240,26 @@ Update
                 "54411240-a3e5-4114-9d8b-f31aae33169c": {
                     "new": {
                         "bridges": [
-                            "uuid",
-                            "045d7d58-02bb-45cf-838f-b4bd8bfa5a82"
+                            "set",
+                            []
                         ],
-                        "cur_cfg": 2
+                        "cur_cfg": 18
                     },
                     "old": {
                         "bridges": [
-                            "set",
-                            []
+                            "uuid",
+                            "c8fe096d-e14c-4bff-9298-668e93fc78ca"
                         ]
                     }
                 }
             },
             "Port": {
-                "c5e381d8-e5d5-4693-9199-b50aeb1ad6f8": {
-                    "new": {
+                "c5b1e35a-0910-4578-b9ff-ae75f2ea04c7": {
+                    "old": {
                         "fake_bridge": false,
                         "interfaces": [
                             "uuid",
-                            "1d3ad587-e962-4441-92ee-0d67929f8d3e"
+                            "d9f09199-1824-49c6-8b61-cb098332b2ee"
                         ],
                         "name": "br0",
                         "tag": [
@@ -269,76 +272,42 @@ Update
         }
     ]
 }
-Response
 {
     "id": 1,
     "result": [
-        {}, // wait
-        {   // insert port response
-            "uuid": [
-                "uuid",
-                "c5e381d8-e5d5-4693-9199-b50aeb1ad6f8"
-            ]
-        },
-        {  // update bridge table, count is number of rows that matched
+        {},
+        {
             "count": 1
         },
-        {  // response to insert interface
-            "uuid": [
-                "uuid",
-                "1d3ad587-e962-4441-92ee-0d67929f8d3e"
-            ]
-        },
-        {  // response to insert bridge
-            "uuid": [
-                "uuid",
-                "045d7d58-02bb-45cf-838f-b4bd8bfa5a82"
-            ]
-        },
-        {   // response to mutate nxt_cfg
+        {
             "count": 1
         },
-        {   // select response
+        {
             "rows": [
                 {
-                    "next_cfg": 3
+                    "next_cfg": 19
                 }
             ]
         },
-        {}   // comment response
+        {}
     ]
 }
-Update
 {
     "method": "update",
     "params": [
         null,
         {
-            "Interface": {
-                "1d3ad587-e962-4441-92ee-0d67929f8d3e": {
-                    "new": {
-                        "name": "br0",
-                        "ofport": 65534
-                    },
-                    "old": {
-                        "ofport": [
-                            "set",
-                            []
-                        ]
-                    }
-                }
-            },
             "Open_vSwitch": {
                 "54411240-a3e5-4114-9d8b-f31aae33169c": {
                     "new": {
                         "bridges": [
-                            "uuid",
-                            "045d7d58-02bb-45cf-838f-b4bd8bfa5a82"
+                            "set",
+                            []
                         ],
-                        "cur_cfg": 3
+                        "cur_cfg": 19
                     },
                     "old": {
-                        "cur_cfg": 2
+                        "cur_cfg": 18
                     }
                 }
             }

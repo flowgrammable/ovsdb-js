@@ -1,0 +1,186 @@
+{
+    "id": 0,
+    "method": "monitor",
+    "params": [
+        "Open_vSwitch",
+        null,
+        {
+            "Bridge": {
+                "columns": [
+                    "name",
+                    "protocols"
+                ]
+            },
+            "Flow_Sample_Collector_Set": {
+                "columns": [
+                    "bridge"
+                ]
+            },
+            "Open_vSwitch": {
+                "columns": [
+                    "cur_cfg"
+                ]
+            }
+        }
+    ]
+}
+{
+    "id": 0,
+    "result": {
+        "Bridge": {
+            "c8fe096d-e14c-4bff-9298-668e93fc78ca": {
+                "new": {
+                    "name": "br0",
+                    "protocols": [
+                        "set",
+                        []
+                    ]
+                }
+            }
+        },
+        "Open_vSwitch": {
+            "54411240-a3e5-4114-9d8b-f31aae33169c": {
+                "new": {
+                    "cur_cfg": 16
+                }
+            }
+        }
+    }
+}
+{
+    "id": 1,
+    "method": "transact",
+    "params": [
+        "Open_vSwitch",
+        {
+            "op": "update",
+            "row": {
+                "protocols": [
+                    "set",
+                    [
+                        "OpenFlow10",
+                        "OpenFlow13"
+                    ]
+                ]
+            },
+            "table": "Bridge",
+            "where": [
+                [
+                    "_uuid",
+                    "==",
+                    [
+                        "uuid",
+                        "c8fe096d-e14c-4bff-9298-668e93fc78ca"
+                    ]
+                ]
+            ]
+        },
+        {
+            "mutations": [
+                [
+                    "next_cfg",
+                    "+=",
+                    1
+                ]
+            ],
+            "op": "mutate",
+            "table": "Open_vSwitch",
+            "where": [
+                [
+                    "_uuid",
+                    "==",
+                    [
+                        "uuid",
+                        "54411240-a3e5-4114-9d8b-f31aae33169c"
+                    ]
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "next_cfg"
+            ],
+            "op": "select",
+            "table": "Open_vSwitch",
+            "where": [
+                [
+                    "_uuid",
+                    "==",
+                    [
+                        "uuid",
+                        "54411240-a3e5-4114-9d8b-f31aae33169c"
+                    ]
+                ]
+            ]
+        },
+        {
+            "comment": "ovs-vsctl: ovs-vsctl --verbose set Bridge br0 protocols=OpenFlow10,OpenFlow13",
+            "op": "comment"
+        }
+    ]
+}
+{
+    "method": "update",
+    "params": [
+        null,
+        {
+            "Bridge": {
+                "c8fe096d-e14c-4bff-9298-668e93fc78ca": {
+                    "new": {
+                        "name": "br0",
+                        "protocols": [
+                            "set",
+                            [
+                                "OpenFlow10",
+                                "OpenFlow13"
+                            ]
+                        ]
+                    },
+                    "old": {
+                        "protocols": [
+                            "set",
+                            []
+                        ]
+                    }
+                }
+            }
+        }
+    ]
+}
+{
+    "id": 1,
+    "result": [
+        {
+            "count": 1
+        },
+        {
+            "count": 1
+        },
+        {
+            "rows": [
+                {
+                    "next_cfg": 17
+                }
+            ]
+        },
+        {}
+    ]
+}
+{
+    "method": "update",
+    "params": [
+        null,
+        {
+            "Open_vSwitch": {
+                "54411240-a3e5-4114-9d8b-f31aae33169c": {
+                    "new": {
+                        "cur_cfg": 17
+                    },
+                    "old": {
+                        "cur_cfg": 16
+                    }
+                }
+            }
+        }
+    ]
+}
