@@ -30,7 +30,7 @@ exports.isRequest = isRequest;
 
 function isNotification(msg) {
   // assumes its a request
-  return (msg.id === null || !msg.id);
+  return (msg.id === null || _(msg.id).isUndefined() );
 }
 exports.isNotification = isNotification;
 
@@ -142,7 +142,7 @@ Peer.prototype.rxResponse = function(msg) {
     this.requests[msg.id].callback(msg.error, msg.result);
     delete this.requests[msg.id];
   } else {
-    console.log('unknown response');
+    this.log.error('Unknown response');
   }
 };
 
