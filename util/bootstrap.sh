@@ -23,3 +23,11 @@ sudo /home/vagrant/mininet/util/install.sh -n
 cd /home/vagrant
 /vagrant/util/ovs_install-2.3.1
 /vagrant/util/ovs_run-2.3.1
+
+# Node
+cd /home/vagrant
+/vagrant/util/nodejs_install
+
+# Node modules 
+cd /vagrant
+npm install

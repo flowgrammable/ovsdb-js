@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+cd /home/vagrant
+wget https://github.com/joyent/node/archive/master.zip
+unzip master.zip
+rm master.zip
+cd node-master
+./configure
+make
+sudo make install
