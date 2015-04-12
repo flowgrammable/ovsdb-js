@@ -1,0 +1,316 @@
+{
+    "id": 0,
+    "method": "monitor",
+    "params": [
+        "Open_vSwitch",
+        null,
+        {
+            "Bridge": {
+                "columns": [
+                    "controller",
+                    "fail_mode",
+                    "name",
+                    "ports"
+                ]
+            },
+            "Controller": {
+                "columns": []
+            },
+            "Interface": {
+                "columns": [
+                    "name",
+                    "ofport"
+                ]
+            },
+            "Open_vSwitch": {
+                "columns": [
+                    "bridges",
+                    "cur_cfg"
+                ]
+            },
+            "Port": {
+                "columns": [
+                    "fake_bridge",
+                    "interfaces",
+                    "name",
+                    "tag"
+                ]
+            }
+        }
+    ]
+}
+{
+    "id": 0,
+    "result": {
+        "Bridge": {
+            "c8fe096d-e14c-4bff-9298-668e93fc78ca": {
+                "new": {
+                    "controller": [
+                        "uuid",
+                        "cfa3f144-fde3-40c9-a522-0c60ca7ff6d6"
+                    ],
+                    "fail_mode": [
+                        "set",
+                        []
+                    ],
+                    "name": "br0",
+                    "ports": [
+                        "uuid",
+                        "c5b1e35a-0910-4578-b9ff-ae75f2ea04c7"
+                    ]
+                }
+            }
+        },
+        "Controller": {
+            "cfa3f144-fde3-40c9-a522-0c60ca7ff6d6": {
+                "new": {}
+            }
+        },
+        "Interface": {
+            "d9f09199-1824-49c6-8b61-cb098332b2ee": {
+                "new": {
+                    "name": "br0",
+                    "ofport": 65534
+                }
+            }
+        },
+        "Open_vSwitch": {
+            "54411240-a3e5-4114-9d8b-f31aae33169c": {
+                "new": {
+                    "bridges": [
+                        "uuid",
+                        "c8fe096d-e14c-4bff-9298-668e93fc78ca"
+                    ],
+                    "cur_cfg": 18
+                }
+            }
+        },
+        "Port": {
+            "c5b1e35a-0910-4578-b9ff-ae75f2ea04c7": {
+                "new": {
+                    "fake_bridge": false,
+                    "interfaces": [
+                        "uuid",
+                        "d9f09199-1824-49c6-8b61-cb098332b2ee"
+                    ],
+                    "name": "br0",
+                    "tag": [
+                        "set",
+                        []
+                    ]
+                }
+            }
+        }
+    }
+}
+{
+    "id": 1,
+    "method": "transact",
+    "params": [
+        "Open_vSwitch",
+        {
+            "columns": [
+                "bridges"
+            ],
+            "op": "wait",
+            "rows": [
+                {
+                    "bridges": [
+                        "uuid",
+                        "c8fe096d-e14c-4bff-9298-668e93fc78ca"
+                    ]
+                }
+            ],
+            "table": "Open_vSwitch",
+            "timeout": 0,
+            "until": "==",
+            "where": [
+                [
+                    "_uuid",
+                    "==",
+                    [
+                        "uuid",
+                        "54411240-a3e5-4114-9d8b-f31aae33169c"
+                    ]
+                ]
+            ]
+        },
+        {
+            "op": "update",
+            "row": {
+                "bridges": [
+                    "set",
+                    []
+                ]
+            },
+            "table": "Open_vSwitch",
+            "where": [
+                [
+                    "_uuid",
+                    "==",
+                    [
+                        "uuid",
+                        "54411240-a3e5-4114-9d8b-f31aae33169c"
+                    ]
+                ]
+            ]
+        },
+        {
+            "mutations": [
+                [
+                    "next_cfg",
+                    "+=",
+                    1
+                ]
+            ],
+            "op": "mutate",
+            "table": "Open_vSwitch",
+            "where": [
+                [
+                    "_uuid",
+                    "==",
+                    [
+                        "uuid",
+                        "54411240-a3e5-4114-9d8b-f31aae33169c"
+                    ]
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "next_cfg"
+            ],
+            "op": "select",
+            "table": "Open_vSwitch",
+            "where": [
+                [
+                    "_uuid",
+                    "==",
+                    [
+                        "uuid",
+                        "54411240-a3e5-4114-9d8b-f31aae33169c"
+                    ]
+                ]
+            ]
+        },
+        {
+            "comment": "ovs-vsctl: ovs-vsctl --verbose del-br br0",
+            "op": "comment"
+        }
+    ]
+}
+{
+    "method": "update",
+    "params": [
+        null,
+        {
+            "Bridge": {
+                "c8fe096d-e14c-4bff-9298-668e93fc78ca": {
+                    "old": {
+                        "controller": [
+                            "uuid",
+                            "cfa3f144-fde3-40c9-a522-0c60ca7ff6d6"
+                        ],
+                        "fail_mode": [
+                            "set",
+                            []
+                        ],
+                        "name": "br0",
+                        "ports": [
+                            "uuid",
+                            "c5b1e35a-0910-4578-b9ff-ae75f2ea04c7"
+                        ]
+                    }
+                }
+            },
+            "Controller": {
+                "cfa3f144-fde3-40c9-a522-0c60ca7ff6d6": {
+                    "old": {}
+                }
+            },
+            "Interface": {
+                "d9f09199-1824-49c6-8b61-cb098332b2ee": {
+                    "old": {
+                        "name": "br0",
+                        "ofport": 65534
+                    }
+                }
+            },
+            "Open_vSwitch": {
+                "54411240-a3e5-4114-9d8b-f31aae33169c": {
+                    "new": {
+                        "bridges": [
+                            "set",
+                            []
+                        ],
+                        "cur_cfg": 18
+                    },
+                    "old": {
+                        "bridges": [
+                            "uuid",
+                            "c8fe096d-e14c-4bff-9298-668e93fc78ca"
+                        ]
+                    }
+                }
+            },
+            "Port": {
+                "c5b1e35a-0910-4578-b9ff-ae75f2ea04c7": {
+                    "old": {
+                        "fake_bridge": false,
+                        "interfaces": [
+                            "uuid",
+                            "d9f09199-1824-49c6-8b61-cb098332b2ee"
+                        ],
+                        "name": "br0",
+                        "tag": [
+                            "set",
+                            []
+                        ]
+                    }
+                }
+            }
+        }
+    ]
+}
+{
+    "id": 1,
+    "result": [
+        {},
+        {
+            "count": 1
+        },
+        {
+            "count": 1
+        },
+        {
+            "rows": [
+                {
+                    "next_cfg": 19
+                }
+            ]
+        },
+        {}
+    ]
+}
+{
+    "method": "update",
+    "params": [
+        null,
+        {
+            "Open_vSwitch": {
+                "54411240-a3e5-4114-9d8b-f31aae33169c": {
+                    "new": {
+                        "bridges": [
+                            "set",
+                            []
+                        ],
+                        "cur_cfg": 19
+                    },
+                    "old": {
+                        "cur_cfg": 18
+                    }
+                }
+            }
+        }
+    ]
+}

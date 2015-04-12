@@ -1,0 +1,418 @@
+{
+    "id": 0,
+    "method": "monitor",
+    "params": [
+        "Open_vSwitch",
+        null,
+        {
+            "Bridge": {
+                "columns": [
+                    "controller",
+                    "fail_mode",
+                    "name",
+                    "ports"
+                ]
+            },
+            "Controller": {
+                "columns": []
+            },
+            "Interface": {
+                "columns": [
+                    "name",
+                    "ofport"
+                ]
+            },
+            "Open_vSwitch": {
+                "columns": [
+                    "bridges",
+                    "cur_cfg"
+                ]
+            },
+            "Port": {
+                "columns": [
+                    "fake_bridge",
+                    "interfaces",
+                    "name",
+                    "tag"
+                ]
+            }
+        }
+    ]
+}
+{
+    "id": 0,
+    "result": {
+        "Bridge": {
+            "c8fe096d-e14c-4bff-9298-668e93fc78ca": {
+                "new": {
+                    "controller": [
+                        "set",
+                        []
+                    ],
+                    "fail_mode": [
+                        "set",
+                        []
+                    ],
+                    "name": "br0",
+                    "ports": [
+                        "uuid",
+                        "c5b1e35a-0910-4578-b9ff-ae75f2ea04c7"
+                    ]
+                }
+            }
+        },
+        "Interface": {
+            "d9f09199-1824-49c6-8b61-cb098332b2ee": {
+                "new": {
+                    "name": "br0",
+                    "ofport": 65534
+                }
+            }
+        },
+        "Open_vSwitch": {
+            "54411240-a3e5-4114-9d8b-f31aae33169c": {
+                "new": {
+                    "bridges": [
+                        "uuid",
+                        "c8fe096d-e14c-4bff-9298-668e93fc78ca"
+                    ],
+                    "cur_cfg": 14
+                }
+            }
+        },
+        "Port": {
+            "c5b1e35a-0910-4578-b9ff-ae75f2ea04c7": {
+                "new": {
+                    "fake_bridge": false,
+                    "interfaces": [
+                        "uuid",
+                        "d9f09199-1824-49c6-8b61-cb098332b2ee"
+                    ],
+                    "name": "br0",
+                    "tag": [
+                        "set",
+                        []
+                    ]
+                }
+            }
+        }
+    }
+}
+{
+    "id": 1,
+    "method": "transact",
+    "params": [
+        "Open_vSwitch",
+        {
+            "columns": [
+                "bridges"
+            ],
+            "op": "wait",
+            "rows": [
+                {
+                    "bridges": [
+                        "uuid",
+                        "c8fe096d-e14c-4bff-9298-668e93fc78ca"
+                    ]
+                }
+            ],
+            "table": "Open_vSwitch",
+            "timeout": 0,
+            "until": "==",
+            "where": [
+                [
+                    "_uuid",
+                    "==",
+                    [
+                        "uuid",
+                        "54411240-a3e5-4114-9d8b-f31aae33169c"
+                    ]
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "ports"
+            ],
+            "op": "wait",
+            "rows": [
+                {
+                    "ports": [
+                        "uuid",
+                        "c5b1e35a-0910-4578-b9ff-ae75f2ea04c7"
+                    ]
+                }
+            ],
+            "table": "Bridge",
+            "timeout": 0,
+            "until": "==",
+            "where": [
+                [
+                    "_uuid",
+                    "==",
+                    [
+                        "uuid",
+                        "c8fe096d-e14c-4bff-9298-668e93fc78ca"
+                    ]
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "interfaces"
+            ],
+            "op": "wait",
+            "rows": [
+                {
+                    "interfaces": [
+                        "uuid",
+                        "d9f09199-1824-49c6-8b61-cb098332b2ee"
+                    ]
+                }
+            ],
+            "table": "Port",
+            "timeout": 0,
+            "until": "==",
+            "where": [
+                [
+                    "_uuid",
+                    "==",
+                    [
+                        "uuid",
+                        "c5b1e35a-0910-4578-b9ff-ae75f2ea04c7"
+                    ]
+                ]
+            ]
+        },
+        {
+            "op": "insert",
+            "row": {
+                "name": "eth1"
+            },
+            "table": "Interface",
+            "uuid-name": "row1a3748dc_71a1_4a4c_a3a8_da8abf779184"
+        },
+        {
+            "op": "update",
+            "row": {
+                "ports": [
+                    "set",
+                    [
+                        [
+                            "named-uuid",
+                            "row82a45caa_d340_405c_9686_a854696f9cdb"
+                        ],
+                        [
+                            "uuid",
+                            "c5b1e35a-0910-4578-b9ff-ae75f2ea04c7"
+                        ]
+                    ]
+                ]
+            },
+            "table": "Bridge",
+            "where": [
+                [
+                    "_uuid",
+                    "==",
+                    [
+                        "uuid",
+                        "c8fe096d-e14c-4bff-9298-668e93fc78ca"
+                    ]
+                ]
+            ]
+        },
+        {
+            "op": "insert",
+            "row": {
+                "interfaces": [
+                    "named-uuid",
+                    "row1a3748dc_71a1_4a4c_a3a8_da8abf779184"
+                ],
+                "name": "eth1"
+            },
+            "table": "Port",
+            "uuid-name": "row82a45caa_d340_405c_9686_a854696f9cdb"
+        },
+        {
+            "mutations": [
+                [
+                    "next_cfg",
+                    "+=",
+                    1
+                ]
+            ],
+            "op": "mutate",
+            "table": "Open_vSwitch",
+            "where": [
+                [
+                    "_uuid",
+                    "==",
+                    [
+                        "uuid",
+                        "54411240-a3e5-4114-9d8b-f31aae33169c"
+                    ]
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "next_cfg"
+            ],
+            "op": "select",
+            "table": "Open_vSwitch",
+            "where": [
+                [
+                    "_uuid",
+                    "==",
+                    [
+                        "uuid",
+                        "54411240-a3e5-4114-9d8b-f31aae33169c"
+                    ]
+                ]
+            ]
+        },
+        {
+            "comment": "ovs-vsctl: ovs-vsctl --verbose add-port br0 eth1",
+            "op": "comment"
+        }
+    ]
+}
+{
+    "method": "update",
+    "params": [
+        null,
+        {
+            "Bridge": {
+                "c8fe096d-e14c-4bff-9298-668e93fc78ca": {
+                    "new": {
+                        "controller": [
+                            "set",
+                            []
+                        ],
+                        "fail_mode": [
+                            "set",
+                            []
+                        ],
+                        "name": "br0",
+                        "ports": [
+                            "set",
+                            [
+                                [
+                                    "uuid",
+                                    "0cc6eb35-022c-45b9-92f9-cd514a5c6a39"
+                                ],
+                                [
+                                    "uuid",
+                                    "c5b1e35a-0910-4578-b9ff-ae75f2ea04c7"
+                                ]
+                            ]
+                        ]
+                    },
+                    "old": {
+                        "ports": [
+                            "uuid",
+                            "c5b1e35a-0910-4578-b9ff-ae75f2ea04c7"
+                        ]
+                    }
+                }
+            },
+            "Interface": {
+                "c8ab0dcf-3841-4e32-a4f9-6ba6f9a011e4": {
+                    "new": {
+                        "name": "eth1",
+                        "ofport": [
+                            "set",
+                            []
+                        ]
+                    }
+                }
+            },
+            "Port": {
+                "0cc6eb35-022c-45b9-92f9-cd514a5c6a39": {
+                    "new": {
+                        "fake_bridge": false,
+                        "interfaces": [
+                            "uuid",
+                            "c8ab0dcf-3841-4e32-a4f9-6ba6f9a011e4"
+                        ],
+                        "name": "eth1",
+                        "tag": [
+                            "set",
+                            []
+                        ]
+                    }
+                }
+            }
+        }
+    ]
+}
+{
+    "id": 1,
+    "result": [
+        {},
+        {},
+        {},
+        {
+            "uuid": [
+                "uuid",
+                "c8ab0dcf-3841-4e32-a4f9-6ba6f9a011e4"
+            ]
+        },
+        {
+            "count": 1
+        },
+        {
+            "uuid": [
+                "uuid",
+                "0cc6eb35-022c-45b9-92f9-cd514a5c6a39"
+            ]
+        },
+        {
+            "count": 1
+        },
+        {
+            "rows": [
+                {
+                    "next_cfg": 15
+                }
+            ]
+        },
+        {}
+    ]
+}
+{
+    "method": "update",
+    "params": [
+        null,
+        {
+            "Interface": {
+                "c8ab0dcf-3841-4e32-a4f9-6ba6f9a011e4": {
+                    "new": {
+                        "name": "eth1",
+                        "ofport": 1
+                    },
+                    "old": {
+                        "ofport": [
+                            "set",
+                            []
+                        ]
+                    }
+                }
+            },
+            "Open_vSwitch": {
+                "54411240-a3e5-4114-9d8b-f31aae33169c": {
+                    "new": {
+                        "bridges": [
+                            "uuid",
+                            "c8fe096d-e14c-4bff-9298-668e93fc78ca"
+                        ],
+                        "cur_cfg": 15
+                    },
+                    "old": {
+                        "cur_cfg": 14
+                    }
+                }
+            }
+        }
+    ]
+}

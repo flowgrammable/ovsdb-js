@@ -1,4 +1,4 @@
-exports.Requests = [
+Request
 {
     "id": 0,
     "method": "monitor",
@@ -39,7 +39,25 @@ exports.Requests = [
             }
         }
     ]
-},
+}
+Response
+{
+    "id": 0,
+    "result": {
+        "Open_vSwitch": {
+            "54411240-a3e5-4114-9d8b-f31aae33169c": {
+                "new": {
+                    "bridges": [
+                        "set",
+                        []
+                    ],
+                    "cur_cfg": 2
+                }
+            }
+        }
+    }
+}
+Request
 {
     "id": 1,
     "method": "transact",
@@ -168,65 +186,8 @@ exports.Requests = [
             "op": "comment"
         }
     ]
-}];
-
-exports.Responses = [
-{
-    "id": 0,
-    "result": {
-        "Open_vSwitch": {
-            "54411240-a3e5-4114-9d8b-f31aae33169c": {
-                "new": {
-                    "bridges": [
-                        "set",
-                        []
-                    ],
-                    "cur_cfg": 2
-                }
-            }
-        }
-    }
-},
-{
-    "id": 1,
-    "result": [
-        {},
-        {  
-            "uuid": [
-                "uuid",
-                "c5e381d8-e5d5-4693-9199-b50aeb1ad6f8"
-            ]
-        },
-        { 
-            "count": 1
-        },
-        { 
-            "uuid": [
-                "uuid",
-                "1d3ad587-e962-4441-92ee-0d67929f8d3e"
-            ]
-        },
-        { 
-            "uuid": [
-                "uuid",
-                "045d7d58-02bb-45cf-838f-b4bd8bfa5a82"
-            ]
-        },
-        {   
-            "count": 1
-        },
-        {  
-            "rows": [
-                {
-                    "next_cfg": 3
-                }
-            ]
-        },
-        {}
-    ]
-}];
-
-exports.Notifications = [
+}
+Update
 {
     "method": "update",
     "params": [
@@ -297,7 +258,47 @@ exports.Notifications = [
             }
         }
     ]
-},
+}
+Response
+{
+    "id": 1,
+    "result": [
+        {},
+        {
+            "uuid": [
+                "uuid",
+                "c5e381d8-e5d5-4693-9199-b50aeb1ad6f8"
+            ]
+        },
+        {
+            "count": 1
+        },
+        {
+            "uuid": [
+                "uuid",
+                "1d3ad587-e962-4441-92ee-0d67929f8d3e"
+            ]
+        },
+        {
+            "uuid": [
+                "uuid",
+                "045d7d58-02bb-45cf-838f-b4bd8bfa5a82"
+            ]
+        },
+        {
+            "count": 1
+        },
+        {
+            "rows": [
+                {
+                    "next_cfg": 3
+                }
+            ]
+        },
+        {}
+    ]
+}
+Update
 {
     "method": "update",
     "params": [
@@ -334,4 +335,3 @@ exports.Notifications = [
         }
     ]
 }
-];
