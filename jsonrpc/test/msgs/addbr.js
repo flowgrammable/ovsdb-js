@@ -1,0 +1,337 @@
+exports.Requests = [
+{
+    "id": 0,
+    "method": "monitor",
+    "params": [
+        "Open_vSwitch",
+        null,
+        {
+            "Bridge": {
+                "columns": [
+                    "controller",
+                    "fail_mode",
+                    "name",
+                    "ports"
+                ]
+            },
+            "Controller": {
+                "columns": []
+            },
+            "Interface": {
+                "columns": [
+                    "name",
+                    "ofport"
+                ]
+            },
+            "Open_vSwitch": {
+                "columns": [
+                    "bridges",
+                    "cur_cfg"
+                ]
+            },
+            "Port": {
+                "columns": [
+                    "fake_bridge",
+                    "interfaces",
+                    "name",
+                    "tag"
+                ]
+            }
+        }
+    ]
+},
+{
+    "id": 1,
+    "method": "transact",
+    "params": [
+        "Open_vSwitch",
+        {
+            "columns": [
+                "bridges"
+            ],
+            "op": "wait",
+            "rows": [
+                {
+                    "bridges": [
+                        "set",
+                        []
+                    ]
+                }
+            ],
+            "table": "Open_vSwitch",
+            "timeout": 0,
+            "until": "==",
+            "where": [
+                [
+                    "_uuid",
+                    "==",
+                    [
+                        "uuid",
+                        "54411240-a3e5-4114-9d8b-f31aae33169c"
+                    ]
+                ]
+            ]
+        },
+        {
+            "op": "insert",
+            "row": {
+                "interfaces": [
+                    "named-uuid",
+                    "row130cfe88_ba44_4ae7_917e_6c875716bd36"
+                ],
+                "name": "br0"
+            },
+            "table": "Port",
+            "uuid-name": "row53155020_4eff_4960_b48d_1326f123face"
+        },
+        {
+            "op": "update",
+            "row": {
+                "bridges": [
+                    "named-uuid",
+                    "row920275d1_6714_4d46_8262_e214022426a5"
+                ]
+            },
+            "table": "Open_vSwitch",
+            "where": [
+                [
+                    "_uuid",
+                    "==",
+                    [
+                        "uuid",
+                        "54411240-a3e5-4114-9d8b-f31aae33169c"
+                    ]
+                ]
+            ]
+        },
+        {
+            "op": "insert",
+            "row": {
+                "name": "br0",
+                "type": "internal"
+            },
+            "table": "Interface",
+            "uuid-name": "row130cfe88_ba44_4ae7_917e_6c875716bd36"
+        },
+        {
+            "op": "insert",
+            "row": {
+                "name": "br0",
+                "ports": [
+                    "named-uuid",
+                    "row53155020_4eff_4960_b48d_1326f123face"
+                ]
+            },
+            "table": "Bridge",
+            "uuid-name": "row920275d1_6714_4d46_8262_e214022426a5"
+        },
+        {
+            "mutations": [
+                [
+                    "next_cfg",
+                    "+=",
+                    1
+                ]
+            ],
+            "op": "mutate",
+            "table": "Open_vSwitch",
+            "where": [
+                [
+                    "_uuid",
+                    "==",
+                    [
+                        "uuid",
+                        "54411240-a3e5-4114-9d8b-f31aae33169c"
+                    ]
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "next_cfg"
+            ],
+            "op": "select",
+            "table": "Open_vSwitch",
+            "where": [
+                [
+                    "_uuid",
+                    "==",
+                    [
+                        "uuid",
+                        "54411240-a3e5-4114-9d8b-f31aae33169c"
+                    ]
+                ]
+            ]
+        },
+        {
+            "comment": "ovs-vsctl: ovs-vsctl --verbose add-br br0",
+            "op": "comment"
+        }
+    ]
+}];
+
+exports.Responses = [
+{
+    "id": 0,
+    "result": {
+        "Open_vSwitch": {
+            "54411240-a3e5-4114-9d8b-f31aae33169c": {
+                "new": {
+                    "bridges": [
+                        "set",
+                        []
+                    ],
+                    "cur_cfg": 2
+                }
+            }
+        }
+    }
+},
+{
+    "id": 1,
+    "result": [
+        {},
+        {  
+            "uuid": [
+                "uuid",
+                "c5e381d8-e5d5-4693-9199-b50aeb1ad6f8"
+            ]
+        },
+        { 
+            "count": 1
+        },
+        { 
+            "uuid": [
+                "uuid",
+                "1d3ad587-e962-4441-92ee-0d67929f8d3e"
+            ]
+        },
+        { 
+            "uuid": [
+                "uuid",
+                "045d7d58-02bb-45cf-838f-b4bd8bfa5a82"
+            ]
+        },
+        {   
+            "count": 1
+        },
+        {  
+            "rows": [
+                {
+                    "next_cfg": 3
+                }
+            ]
+        },
+        {}
+    ]
+}];
+
+exports.Notifications = [
+{
+    "method": "update",
+    "params": [
+        null,
+        {
+            "Bridge": {
+                "045d7d58-02bb-45cf-838f-b4bd8bfa5a82": {
+                    "new": {
+                        "controller": [
+                            "set",
+                            []
+                        ],
+                        "fail_mode": [
+                            "set",
+                            []
+                        ],
+                        "name": "br0",
+                        "ports": [
+                            "uuid",
+                            "c5e381d8-e5d5-4693-9199-b50aeb1ad6f8"
+                        ]
+                    }
+                }
+            },
+            "Interface": {
+                "1d3ad587-e962-4441-92ee-0d67929f8d3e": {
+                    "new": {
+                        "name": "br0",
+                        "ofport": [
+                            "set",
+                            []
+                        ]
+                    }
+                }
+            },
+            "Open_vSwitch": {
+                "54411240-a3e5-4114-9d8b-f31aae33169c": {
+                    "new": {
+                        "bridges": [
+                            "uuid",
+                            "045d7d58-02bb-45cf-838f-b4bd8bfa5a82"
+                        ],
+                        "cur_cfg": 2
+                    },
+                    "old": {
+                        "bridges": [
+                            "set",
+                            []
+                        ]
+                    }
+                }
+            },
+            "Port": {
+                "c5e381d8-e5d5-4693-9199-b50aeb1ad6f8": {
+                    "new": {
+                        "fake_bridge": false,
+                        "interfaces": [
+                            "uuid",
+                            "1d3ad587-e962-4441-92ee-0d67929f8d3e"
+                        ],
+                        "name": "br0",
+                        "tag": [
+                            "set",
+                            []
+                        ]
+                    }
+                }
+            }
+        }
+    ]
+},
+{
+    "method": "update",
+    "params": [
+        null,
+        {
+            "Interface": {
+                "1d3ad587-e962-4441-92ee-0d67929f8d3e": {
+                    "new": {
+                        "name": "br0",
+                        "ofport": 65534
+                    },
+                    "old": {
+                        "ofport": [
+                            "set",
+                            []
+                        ]
+                    }
+                }
+            },
+            "Open_vSwitch": {
+                "54411240-a3e5-4114-9d8b-f31aae33169c": {
+                    "new": {
+                        "bridges": [
+                            "uuid",
+                            "045d7d58-02bb-45cf-838f-b4bd8bfa5a82"
+                        ],
+                        "cur_cfg": 3
+                    },
+                    "old": {
+                        "cur_cfg": 2
+                    }
+                }
+            }
+        }
+    ]
+}
+];

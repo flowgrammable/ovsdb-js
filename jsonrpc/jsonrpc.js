@@ -30,12 +30,22 @@ exports.isRequest = isRequest;
 
 function isNotification(msg) {
   // assumes its a request
-  return msg.id === null;
+  return (msg.id === null || !msg.id);
 }
 exports.isNotification = isNotification;
 
+function isSuccess(msg) {
+  return (!msg.error || msg.error === null) &&
+         !_(msg.result).isUndefined();
+}
+
+function isError(msg) {
+  return (!msg.result || msg.result === null) &&
+         !_(msg.error).isUndefined();
+}
+
 function isResponse(msg) {
-  return !_(msg.error).isUndefined() &&
+  return (isError(msg) || isSuccess(msg) ) && 
          !_(msg.id).isUndefined();
 }
 exports.isResponse = isResponse;
