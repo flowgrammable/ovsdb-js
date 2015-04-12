@@ -1,3 +1,12 @@
+Scenario: Set controller
+CMD: ovs-vsctl set-controller br0 tcp:0.0.0.0:6633
+
+1. cli --> server | Request to monitor Open_vSwitch DB tables
+2. cli <-- server | Response to request with init state of tables
+3. cli --> server | Request to transact, add controller to bridge br0
+4. cli <-- server | Notification from request 1
+5. cli <-- server | Response to transact request
+6. cli <-- server | Notification from request 1
 {
     "id": 0,
     "method": "monitor",
@@ -41,6 +50,7 @@
         }
     ]
 }
+Response
 {
     "id": 0,
     "result": {
@@ -129,6 +139,7 @@
         }
     }
 }
+Request
 {
     "id": 1,
     "method": "transact",
@@ -260,6 +271,7 @@
         }
     ]
 }
+Notification
 {
     "method": "update",
     "params": [
@@ -309,6 +321,7 @@
         }
     ]
 }
+Response to transact request
 {
     "id": 1,
     "result": [
@@ -336,6 +349,7 @@
         {}
     ]
 }
+Notification
 {
     "method": "update",
     "params": [

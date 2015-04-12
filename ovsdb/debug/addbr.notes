@@ -1,3 +1,14 @@
+Scenario: Add bridge
+CMD: ovs-vsctl add-br br0
+
+1. cli --> server | Request to monitor bridge, controller, interface, openvswitch, port table
+2. cli <-- server | Respond with init state of openvswitch table (bridge, controller, interface, port tables are empty)
+3. cli --> server | Request transaction to add bridge
+4. cli <-- server | Notification from monitor request in seq 1
+5. cli <-- server | Response to transaction request in seq 3
+6. cli <-- server | Notification from monitor request in seq 1 (ofport update, cur cfg)
+
+
 Request
 {
     "id": 0,
@@ -197,7 +208,7 @@ Transact
         }
     ]
 }
-Update
+Notification
 {
     "method": "update",
     "params": [
@@ -308,7 +319,7 @@ Response
         {}   // comment response
     ]
 }
-Update
+Notification
 {
     "method": "update",
     "params": [
