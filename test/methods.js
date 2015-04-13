@@ -2,14 +2,15 @@ var _ = require('underscore');
 var expect = require('expect.js');
 var net = require('net');
 var ovsdb = require('../lib/ovsdb');
+var ops = require('../lib/operations');
 
 /*
  *  Note: ovsdb instance must be configured to accept connections on port 6640
  *  sudo ovs-vsctl set-manager ptcp:6640
  */
 
-describe('OVSDB Client methods', function(){
-  describe('listDB', function(){
+describe('OVSDB Client', function(){
+  describe('methods', function(){
 
     var ovsdbcli;
     var dbName;
@@ -21,7 +22,7 @@ describe('OVSDB Client methods', function(){
       });
     });
 
-    it('client should get list pass', function(done){
+    it('list_db pass', function(done){
       ovsdbcli.list(function(err, res){
       	expect(res.length).to.be(1);
         console.log(ovsdbcli.peer.requests);
@@ -30,12 +31,12 @@ describe('OVSDB Client methods', function(){
       });
     });
 
-    it('client should get list fail', function(done){
+    it('list_dbs fail', function(done){
       expect(false).to.be(true);
       done();
     });
 
-    it('client should get schema pass', function(done){
+    it('get_schema pass', function(done){
       ovsdbcli.get(dbName, function(err, res){
         expect(_.isObject(res)).to.be(true);
         console.log(ovsdbcli.peer.requests);
@@ -43,12 +44,20 @@ describe('OVSDB Client methods', function(){
       });
     });
 
-    it('client should get schema fail', function(done){
+    it('get_schema fail', function(done){
       ovsdbcli.get('test', function(err, res){
         expect(res.error).to.be('unknown database');
-	      done(); 
+	    done(); 
       });
     });
+
+	it('transact - insert', function(done){
+		var insOp = ops.insert({table:'Bridge',row: {name: 'test01'}});
+		ovsdbcli.transact(dbName, [insOp], function(err, res){
+      expect(res[0].uuid.length).to.be(2);
+			done();
+		});
+	});
 
   });
 });
