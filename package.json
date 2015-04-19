@@ -16,7 +16,7 @@
     "Networking",
     "node"
   ],
-  "author": "Jasson Casey, Colton Chojnacki",
+  "contributors": [{"name":"Jasson Casey"},{"name":"Colton Chojnacki"}],
   "license": "APL2",
   "bugs": {
     "url": "https://github.com/flowgrammable/ovsdb-js/issues"
@@ -24,7 +24,7 @@
   "homepage": "https://github.com/flowgrammable/ovsdb-js",
   "dependencies": {
     "commander": "^2.7.1",
-    "jsonrpc-js": "0.0.2",
+    "jsonrpc-js": "0.0.3",
     "underscore": "^1.8.3"
   },
   "devDependencies": {
