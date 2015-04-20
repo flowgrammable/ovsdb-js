@@ -24,7 +24,7 @@
   "homepage": "https://github.com/flowgrammable/ovsdb-js",
   "dependencies": {
     "commander": "^2.7.1",
-    "jsonrpc-js": "0.0.3",
+    "jsonrpc-js": "^0.0.4",
     "underscore": "^1.8.3"
   },
   "devDependencies": {
