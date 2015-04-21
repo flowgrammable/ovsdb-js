@@ -16,7 +16,14 @@
     "Networking",
     "node"
   ],
-  "contributors": [{"name":"Jasson Casey"},{"name":"Colton Chojnacki"}],
+  "contributors": [
+    {
+      "name": "Jasson Casey"
+    },
+    {
+      "name": "Colton Chojnacki"
+    }
+  ],
   "license": "APL2",
   "bugs": {
     "url": "https://github.com/flowgrammable/ovsdb-js/issues"
@@ -25,7 +32,8 @@
   "dependencies": {
     "commander": "^2.7.1",
     "jsonrpc-js": "^0.0.4",
-    "underscore": "^1.8.3"
+    "underscore": "^1.8.3",
+    "uuid": "^2.0.1"
   },
   "devDependencies": {
     "chai": "^2.2.0",
