@@ -15,9 +15,8 @@ sudo pip install six --upgrade
 # Mininet 
 cd /home/vagrant
 sudo git clone http://github.com/mininet/mininet.git
-cd /home/vagrant/mininet
-sudo python setup.py install
-sudo /home/vagrant/mininet/util/install.sh -n
+cd /home/vagrant/mininet/util
+install.sh -nf
 
 # OVS / OpenVSwitch
 cd /home/vagrant
