@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 
 ## Common
 sudo apt-get update -y
