@@ -12,6 +12,9 @@ sudo python setup.py install
 sudo pip install pbr
 sudo pip install six --upgrade
 
+# install npm
+sudo npm install npm -g
+
 # Mininet 
 cd /home/vagrant
 sudo git clone http://github.com/mininet/mininet.git
