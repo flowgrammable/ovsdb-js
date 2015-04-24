@@ -12,8 +12,13 @@ sudo python setup.py install
 sudo pip install pbr
 sudo pip install six --upgrade
 
-# install npm
-sudo npm install npm -g
+# Node
+cd /home/vagrant
+/vagrant/util/nodejs_install
+
+# Node modules 
+cd /vagrant
+npm install
 
 # Mininet 
 cd /home/vagrant
@@ -26,10 +31,4 @@ cd /home/vagrant
 /vagrant/util/ovs_install-2.3.1
 /vagrant/util/ovs_run-2.3.1
 
-# Node
-cd /home/vagrant
-/vagrant/util/nodejs_install
 
-# Node modules 
-cd /vagrant
-npm install
