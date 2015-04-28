@@ -11,13 +11,13 @@ var ops = require('../lib/operations');
 
 describe('OVSDB Client', function(){
   describe('methods', function(){
-
+    var cfg = {};
     var ovsdbcli;
     var dbName;
     it('client should connect...', function(done){
       var client = new net.Socket();
       client.connect(6640,'0.0.0.0', function(){
-        ovsdbcli = new ovsdb.OVSDB(client);
+        ovsdbcli = new ovsdb.OVSDB(cfg, client);
         done();
       });
     });
