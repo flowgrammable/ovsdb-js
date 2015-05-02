@@ -2,7 +2,7 @@
 
 ## Common
 sudo apt-get update -y
-sudo apt-get -y install git unzip python-pip python-dev nodejs
+sudo apt-get -y install git unzip python-pip python-dev nodejs npm
 sudo npm install -g grunt-cli
 ## Ryu
 cd /home/vagrant
