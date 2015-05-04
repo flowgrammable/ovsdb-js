@@ -2,7 +2,7 @@
   "name": "ovsdb-js",
   "version": "0.0.7",
   "description": "A node.js library implementation of the ovsdb protocol.",
-  "main": "lib/ovsdb.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
