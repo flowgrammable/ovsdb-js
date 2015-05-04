@@ -1,6 +1,6 @@
 {
   "name": "ovsdb-js",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A node.js library implementation of the ovsdb protocol.",
   "main": "lib/ovsdb.js",
   "scripts": {
