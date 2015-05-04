@@ -327,19 +327,19 @@ Response to transact request
     "result": [
         {},
         {},
-        {
+        {    // insert response: controller uuid of new controller entry
             "uuid": [
                 "uuid",
                 "cfa3f144-fde3-40c9-a522-0c60ca7ff6d6"
             ]
         },
-        {
+        {   //update response: the number of rows in bridge table that matched 
             "count": 1
         },
-        {
+        {   // mutate response: the number of rows in open_vswitch table that matched 
             "count": 1
         },
-        {
+        {   // select response: the value of the targeted column
             "rows": [
                 {
                     "next_cfg": 16
