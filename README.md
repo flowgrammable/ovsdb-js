@@ -1,4 +1,4 @@
-Getting Started
+Setting up OVS
 ---------------
 
 1. Clone the git repo
@@ -18,3 +18,7 @@ Getting Started
 
 6. Tell openvswitch to listen on port
 ``` sudo ovs-vsctl set-manager ptcp:6640 ```
+
+Unit Tests
+----------
+```grunt```
